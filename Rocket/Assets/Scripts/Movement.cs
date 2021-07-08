@@ -8,17 +8,22 @@ public class Movement : MonoBehaviour
     [SerializeField]float thrustSpeed=1;
     [SerializeField]float rotationSpeed=1;
 
+    bool isAlive;
+
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody=GetComponent<Rigidbody>();
+        isAlive=true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ProcessInput();
+      if(isAlive){
+          ProcessInput();
         ProcessThrust();
+      }
     }
 
     private void ProcessInput(){      
@@ -51,7 +56,9 @@ public class Movement : MonoBehaviour
 
     }
 
-
+    public void Death(){
+      isAlive=false;
+    }
 
 
 
